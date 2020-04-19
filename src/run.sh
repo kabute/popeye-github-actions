@@ -22,6 +22,7 @@ function report_to_pr {
     # Write report back to Pull Request
     PR_COMMENT=${1}
     if [ "$GITHUB_EVENT_NAME" == "pull_request" ]; then
+        echo ">> Send Report back to Pull Request..."
         # shellcheck disable=SC2001
         PR_COMMENT_SANITIZED=$(echo "${PR_COMMENT}" | sed 's/\x1b\[[0-9;]*m//g')
         COMMENT_PAYLOAD=$(echo "${PR_COMMENT_SANITIZED}"| jq -R --slurp '{body: .}')
@@ -40,7 +41,7 @@ function run_popeye {
     POPEYE_REPORT=$("${POPEYE_HOME}"/popeye "${POPEYE_FLAGS}")
     POPEYE_SCORE=$("${POPEYE_HOME}"/popeye "${POPEYE_FLAGS}" -o score)
 
-    #echo "${POPEYE_REPORT}"
+    echo "${POPEYE_REPORT}"
 
     report_to_pr "${POPEYE_REPORT}"
 

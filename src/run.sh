@@ -37,8 +37,8 @@ function run_popeye {
     # Run Popeye
 
     # Run popeye (standard) report and get score
-    POPEYE_REPORT=$("${POPEYE_HOME}"/popeye/popeye "${POPEYE_FLAGS}")
-    POPEYE_SCORE=$("${POPEYE_HOME}"/popeye/popeye "${POPEYE_FLAGS}" -o score)
+    POPEYE_REPORT=$("${POPEYE_HOME}"/popeye "${POPEYE_FLAGS}")
+    POPEYE_SCORE=$("${POPEYE_HOME}"/popeye "${POPEYE_FLAGS}" -o score)
 
     #echo "${POPEYE_REPORT}"
 

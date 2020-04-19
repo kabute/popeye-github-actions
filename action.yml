@@ -1,0 +1,9 @@
+name: 'Popeye GitHub Actions'
+description: 'This action runs Popeye (Kubernetes Cluster Sanitizer) report (standard) and validates that the score is over the given threshold.'
+author: 'Diego Montes <kabute@kabute.org>'
+branding:
+  icon: 'anchor'
+  color: 'blue'
+runs:
+  using: 'docker'
+  image: './Dockerfile'

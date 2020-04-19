@@ -22,13 +22,13 @@ function report_to_pr {
     # Write report back to Pull Request
     PR_COMMENT=${1}
     if [ "$GITHUB_EVENT_NAME" == "pull_request" ]; then
-        echo ">> Send Report back to Pull Request..."
+        
         # shellcheck disable=SC2001
         PR_COMMENT_SANITIZED=$(echo "${PR_COMMENT}" | sed 's/\x1b\[[0-9;]*m//g')
         COMMENT_PAYLOAD=$(echo "${PR_COMMENT_SANITIZED}"| jq -R --slurp '{body: .}')
         # shellcheck disable=SC2002
         PR_PATH=$(cat "${GITHUB_EVENT_PATH}" | jq -r .pull_request.comments_url)
-
+       echo ">> Send Report back to Pull Request... (Path: ${PR_PATH} ) "
         # Post back to Pull Request
         echo "${COMMENT_PAYLOAD}" | curl -s -S -H "Authorization: token ${GITHUB_TOKEN}" --header "Content-Type: application/json" --data @- "${PR_PATH}" > /dev/null
     fi

@@ -8,10 +8,10 @@ NC='\033[0m'
 function write_kubeconfig {
     # If KUBECONFIG_DATA is set: dump to kubeconfig file
     if [ -n "${KUBECONFIG_DATA}" ]; then
-        echo -e "${GREEN}>> kubeconfig data provided: Writing to ${HOME}/.kube/config${NC}"
-        mkdir -p "${HOME}"/.kube
-        echo "${KUBECONFIG_DATA}" > "${HOME}"/.kube/config
-        export KUBECONFIG="${HOME}"/.kube/config
+        echo -e "${GREEN}>> kubeconfig data provided: Writing to ${POPEYE_HOME}/.kube/config${NC}"
+        mkdir -p "${POPEYE_HOME}"/.kube
+        echo "${KUBECONFIG_DATA}" > "${POPEYE_HOME}"/.kube/config
+        export KUBECONFIG="${POPEYE_HOME}"/.kube/config
     else
         echo -e "${RED}>> ERROR: Please provide KUBECONFIG_DATA from secrets.${NC}"
         exit 1 
@@ -37,8 +37,8 @@ function run_popeye {
     # Run Popeye
 
     # Run popeye (standard) report and get score
-    POPEYE_REPORT=$("${HOME}"/popeye/popeye "${POPEYE_FLAGS}")
-    POPEYE_SCORE=$("${HOME}"/popeye/popeye "${POPEYE_FLAGS}" -o score)
+    POPEYE_REPORT=$("${POPEYE_HOME}"/popeye/popeye "${POPEYE_FLAGS}")
+    POPEYE_SCORE=$("${POPEYE_HOME}"/popeye/popeye "${POPEYE_FLAGS}" -o score)
 
     #echo "${POPEYE_REPORT}"
 

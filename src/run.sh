@@ -43,7 +43,8 @@ function run_popeye {
 
     echo "${POPEYE_REPORT}"
 
-    report_to_pr "${POPEYE_REPORT}"
+    # Disabled for now
+    # report_to_pr "${POPEYE_REPORT}"
 
     # Validate Score
     if [ "${POPEYE_SCORE}" -lt "${POPEYE_MIN_SCORE}" ]; then

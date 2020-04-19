@@ -38,7 +38,7 @@ jobs:
     steps:
     - name: Popeye Score
       id: popeye-score
-      uses: actions/popeye-github-actions@v8
+      uses: actions/popeye-github-actions@v9
       env:
         KUBECONFIG_DATA: ${{ secrets.KUBECONFIG_DATA }}
         POPEYE_MIN_SCORE: 80

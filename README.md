@@ -22,3 +22,24 @@ Flags for Popeye to run the report and tests.
 
 * Comment to the Open PR (if any).
 * Exit code 1 if score is under ther given threshold, 0 otherwise.
+
+##  Example Usage
+
+This example gets the kubeconfig from Github secrets and validates that the cluster score is more or equal than 80:
+```yaml
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  popeye_job:
+    runs-on: ubuntu-latest
+    name: Popeye Validation
+    steps:
+    - name: Popeye Score
+      id: popeye-score
+      uses: actions/popeye-github-actions@v8
+      env:
+        KUBECONFIG_DATA: ${{ secrets.KUBECONFIG_DATA }}
+        POPEYE_MIN_SCORE: 80
+```

@@ -1,6 +1,6 @@
-FROM dtzar/helm-kubectl:3.1.2
+FROM dtzar/helm-kubectl:3.8.0
 
-ENV POPEYE_URL https://github.com/derailed/popeye/releases/download/v0.8.1/popeye_Linux_x86_64.tar.gz
+ENV POPEYE_URL https://github.com/derailed/popeye/releases/download/v0.9.8/popeye_Linux_x86_64.tar.gz
 ENV POPEYE_FLAGS -A
 ENV POPEYE_MIN_SCORE 50
 
